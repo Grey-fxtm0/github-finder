@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* ⚠️ BULLETPROOF TAILWIND V4 DARK MODE SYSTEM */
+/* This forces a global override across the entire app when the .dark class is active */
+html.dark {
+  background-color: #0f172a; /* deep slate-900 */
+  color: #f8fafc; /* slate-50 */
+}
+
+html.dark body {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+/* Force specific components to look gorgeous in dark mode if Tailwind's dark: is being stubborn */
+html.dark .bg-white {
+  background-color: rgba(30, 41, 59, 0.5) !important; /* slate-800/50 */
+  border-color: rgba(71, 85, 105, 0.3) !important; /* slate-600/30 */
+  color: #f8fafc !important;
+}
+
+html.dark input {
+  background-color: #1e293b !important;
+  border-color: #475569 !important;
+  color: #ffffff !important;
+}
+
+html.dark h1, html.dark h2, html.dark h3, html.dark font {
+  color: #ffffff !important;
+}
+
+html.dark p {
+  color: #94a3b8 !important; /* slate-400 */
+}
+
+html.dark .bg-slate-50 {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+/* --- ANIMATIONS --- */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.25s ease forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(8px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideIn {
+  from { 
+    width: 0; 
+    left: 50%; 
+  }
+  to { 
+    width: 100%; 
+    left: 0; 
+  }
+}
+
+/* Smooth transitions when flipping the switch */
+*, ::before, ::after {
+  transition-property: color, background-color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+}
